@@ -141,14 +141,17 @@ searchForm.addEventListener('submit', async event => {
   event.preventDefault();
 
   const id = searchId.value;
-  const product = await fetchProductById(id);
+  const data = await fetchProductById(id);
 
-  if (!product) {
+  // Como o retorno é um array, precisamos acessar data[0]
+  if (!data || data.length === 0) {
     searchResult.innerHTML = `
       <div class="error">Produto não encontrado.</div>
     `;
     return;
   }
+
+  const product = data[0];
 
   searchResult.innerHTML = `
     <div class="card result-card">
@@ -163,4 +166,5 @@ searchForm.addEventListener('submit', async event => {
 // INIT
 // ===============================
 fetchProducts();
+
 
