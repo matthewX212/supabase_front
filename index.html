@@ -5,22 +5,30 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>Product CRUD</h1>
+  <div class="container">
+    <h1>Product CRUD</h1>
 
-  <form id="add-product-form">
-    <h2>Add Product</h2>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" required step="0.01">
-    <button type="submit">Add</button>
-  </form>
+    <form id="add-product-form" class="card">
+      <h2>Add Product</h2>
 
-  <ul id="products"></ul>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="3" required></textarea>
+
+      <label for="price">Price</label>
+      <input type="number" id="price" name="price" required step="0.01">
+
+      <button type="submit" class="btn">Add Product</button>
+    </form>
+
+    <h2>Product List</h2>
+    <ul id="products" class="product-list"></ul>
+  </div>
 
   <script src="app.js"></script>
   <script>
-    // Call fetchProducts() when the page loads
     window.addEventListener('load', fetchProducts);
   </script>
 </body>
