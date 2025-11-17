@@ -61,11 +61,6 @@ input:focus, textarea:focus {
   background: #0056b3;
 }
 
-h2 {
-  color: #444;
-  margin-top: 30px;
-}
-
 .product-list {
   list-style: none;
   padding: 0;
@@ -112,4 +107,14 @@ h2 {
 
 .product-list button:hover {
   background: #b52a36;
+}
+
+.product-list .update-btn {
+  background: #ffc107;
+  color: #000;
+  margin-right: 10px;
+}
+
+.product-list .update-btn:hover {
+  background: #e0a800;
 }
