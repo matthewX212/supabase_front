@@ -121,6 +121,46 @@ async function deleteProduct(id) {
 }
 
 // ===============================
+// SEARCH BY ID
+// ===============================
+const searchForm = document.querySelector('#search-form');
+const searchId = document.querySelector('#search-id');
+const searchResult = document.querySelector('#search-result');
+
+async function fetchProductById(id) {
+  const response = await fetch(`http://52.205.243.188:3000/products/${id}`);
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
+}
+
+searchForm.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const id = searchId.value;
+  const product = await fetchProductById(id);
+
+  if (!product) {
+    searchResult.innerHTML = `
+      <div class="error">Produto não encontrado.</div>
+    `;
+    return;
+  }
+
+  searchResult.innerHTML = `
+    <div class="card result-card">
+      <h3>${product.name}</h3>
+      <p><strong>Description:</strong> ${product.description}</p>
+      <p><strong>Price:</strong> $${product.price}</p>
+    </div>
+  `;
+});
+
+// ===============================
 // INIT
 // ===============================
 fetchProducts();
+
